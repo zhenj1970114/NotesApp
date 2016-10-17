@@ -8,14 +8,22 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+var objects:[String] = [String]()
+var currentIndex:Int = 0
+var masterView: MasterViewController?
+//same as the class we are working in right now 
+var detailViewController:DetailViewController?
 
-    var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+let kNotes:String = "notes"
+let BLANK_NOTE:String = "(New Note)"
+
+
+class MasterViewController: UITableViewController {
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        load()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
 
@@ -23,12 +31,13 @@ class MasterViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
+        save()
         super.viewWillAppear(animated)
     }
 
@@ -38,19 +47,19 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
+        objects.insert(BLANK_NOTE, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
-
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = objects[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                 //how to change this the left part to a string?
+                //controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -70,8 +79,8 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let object = objects[indexPath.row]
+        cell.textLabel!.text = object
         return cell
     }
 
@@ -88,7 +97,41 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    func save(){
+        
+        //old version is:
+        //NSUserDefaults.standardUserDefaults().setObject(objects,forKey:kNoes)
+        UserDefaults.standard.set(objects,forKey:kNotes)
+        UserDefaults.standard.synchronize()
+        
+    
+    }
 
-
+    func load(){
+        if let loadedData = UserDefaults.standard.array(forKey: kNotes)as?[String]{
+            objects = loadedData
+            
+        }
+    
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
