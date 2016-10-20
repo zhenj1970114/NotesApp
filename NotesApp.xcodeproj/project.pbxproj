@@ -15,6 +15,10 @@
 		94478B6C1DB56F2400EA0CA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94478B6A1DB56F2400EA0CA4 /* LaunchScreen.storyboard */; };
 		94478B771DB56F2400EA0CA4 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94478B761DB56F2400EA0CA4 /* NotesAppTests.swift */; };
 		94478B821DB56F2400EA0CA4 /* NotesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94478B811DB56F2400EA0CA4 /* NotesAppUITests.swift */; };
+		947E5CD91DB9107400D7749F /* Arvo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947E5CD51DB9102500D7749F /* Arvo-Bold.ttf */; };
+		947E5CDA1DB9107400D7749F /* Arvo-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947E5CD61DB9102500D7749F /* Arvo-BoldItalic.ttf */; };
+		947E5CDB1DB9107400D7749F /* Arvo-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947E5CD71DB9102500D7749F /* Arvo-Italic.ttf */; };
+		947E5CDC1DB9107400D7749F /* Arvo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947E5CD81DB9102500D7749F /* Arvo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		94478B7D1DB56F2400EA0CA4 /* NotesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94478B811DB56F2400EA0CA4 /* NotesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppUITests.swift; sourceTree = "<group>"; };
 		94478B831DB56F2400EA0CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		947E5CD51DB9102500D7749F /* Arvo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Arvo-Bold.ttf"; path = "Arvo/Arvo-Bold.ttf"; sourceTree = "<group>"; };
+		947E5CD61DB9102500D7749F /* Arvo-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Arvo-BoldItalic.ttf"; path = "Arvo/Arvo-BoldItalic.ttf"; sourceTree = "<group>"; };
+		947E5CD71DB9102500D7749F /* Arvo-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Arvo-Italic.ttf"; path = "Arvo/Arvo-Italic.ttf"; sourceTree = "<group>"; };
+		947E5CD81DB9102500D7749F /* Arvo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Arvo-Regular.ttf"; path = "Arvo/Arvo-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,10 @@
 				94478B751DB56F2400EA0CA4 /* NotesAppTests */,
 				94478B801DB56F2400EA0CA4 /* NotesAppUITests */,
 				94478B5D1DB56F2400EA0CA4 /* Products */,
+				947E5CD51DB9102500D7749F /* Arvo-Bold.ttf */,
+				947E5CD61DB9102500D7749F /* Arvo-BoldItalic.ttf */,
+				947E5CD71DB9102500D7749F /* Arvo-Italic.ttf */,
+				947E5CD81DB9102500D7749F /* Arvo-Regular.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +248,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947E5CD91DB9107400D7749F /* Arvo-Bold.ttf in Resources */,
+				947E5CDA1DB9107400D7749F /* Arvo-BoldItalic.ttf in Resources */,
+				947E5CDB1DB9107400D7749F /* Arvo-Italic.ttf in Resources */,
+				947E5CDC1DB9107400D7749F /* Arvo-Regular.ttf in Resources */,
 				94478B6C1DB56F2400EA0CA4 /* LaunchScreen.storyboard in Resources */,
 				94478B691DB56F2400EA0CA4 /* Assets.xcassets in Resources */,
 				94478B671DB56F2400EA0CA4 /* Main.storyboard in Resources */,
@@ -510,6 +526,7 @@
 				94478B881DB56F2400EA0CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94478B891DB56F2400EA0CA4 /* Build configuration list for PBXNativeTarget "NotesAppTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +535,7 @@
 				94478B8B1DB56F2400EA0CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94478B8C1DB56F2400EA0CA4 /* Build configuration list for PBXNativeTarget "NotesAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +544,7 @@
 				94478B8E1DB56F2400EA0CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

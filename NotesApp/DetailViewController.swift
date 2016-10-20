@@ -15,16 +15,23 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
-            }
+        if objects.count == 0 {
+            return
         }
+            if let label = self.detailDescriptionLabel {
+                label.text = objects[currentIndex]
+                if label.text == BLANK_NOTE{
+                    label.text = ""
+                }
+            }
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        detailViewController = self
+        detailDescriptionLabel.becomeFirstResponder()
         self.configureView()
     }
 
@@ -32,6 +39,18 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if objects.count == 0 {
+            return
+        }
+        objects[currentIndex] = detailDescriptionLabel.text
+        if(detailDescriptionLabel.text==""){
+        objects[currentIndex] = BLANK_NOTE
+            
+        }
+    }
+
 
     var detailItem: NSDate? {
         didSet {
@@ -39,7 +58,48 @@ class DetailViewController: UIViewController {
             self.configureView()
         }
     }
+    
+        func saveAndUpdate(){
+        masterView?.save()
+        masterView?.tableView.reloadData()
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
