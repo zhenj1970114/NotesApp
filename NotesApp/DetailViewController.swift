@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
     }
 
 
-    var detailItem: NSDate? {
+    var detailItem: String? {
         didSet {
             // Update the view.
             self.configureView()

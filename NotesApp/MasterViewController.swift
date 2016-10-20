@@ -29,6 +29,7 @@ class MasterViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        addButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = addButton
         
     }
@@ -38,6 +39,7 @@ class MasterViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         save()
         super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,40 +60,24 @@ class MasterViewController: UITableViewController {
         //go into editing screen when hit the plus sign
         
     }
-    // MARK: - Segues
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        detailViewController?.detailDescriptionLabel.isEditable = true
+        
+        
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 currentIndex = indexPath.row
-                
-                 //how to change this the left part to a string?
-                //detailViewController?.detailItem = object
-                detailViewController?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-               detailViewController?.navigationItem.leftItemsSupplementBackButton = true
             }
+            
+            let object: String = objects[currentIndex]
+            
+            detailViewController?.detailItem = object
+            detailViewController?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+            detailViewController?.navigationItem.leftItemsSupplementBackButton = true
+            
         }
     }
-    
-    //from professor
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        detailViewController?.detailDescriptionLabel.isEditable = true
-//        
-//        
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                currentIndex = indexPath.row
-//            }
-//            
-//            let object: String = objects[currentIndex]
-//            
-//            detailViewController?.detailItem = object
-//            detailViewController?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-//            detailViewController?.navigationItem.leftItemsSupplementBackButton = true
-//            
-//        }
-//    }
     
     
     // MARK: - Table View
@@ -133,8 +119,6 @@ class MasterViewController: UITableViewController {
         UserDefaults.standard.synchronize()
         //save the data to persistent storage?
         
-        
-    
     }
 
     func load(){
